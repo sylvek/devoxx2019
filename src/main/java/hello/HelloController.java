@@ -1,5 +1,6 @@
 package hello;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,12 @@ public class HelloController {
     EchoService echoService;
 
     @RequestMapping("/")
+    @HystrixCommand(fallbackMethod = "reliable")
     public String index() {
         return String.format("Hello %s!", echoService.getEcho());
+    }
+
+    public String reliable() {
+        return "Hello Chaos!";
     }
 }
