@@ -11,12 +11,7 @@ public class HelloController {
     EchoService echoService;
 
     @RequestMapping("/")
-    //@HystrixCommand(fallbackMethod = "reliable")
     public String index() {
         return String.format("Hello %s!", echoService.getEcho());
-    }
-
-    public String reliable() {
-        return "Hello Chaos!";
     }
 }

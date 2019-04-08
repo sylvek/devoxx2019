@@ -49,7 +49,7 @@ public class HelloControllerIT {
 
     @Test
     public void getHello() throws Exception {
-        proxy.toxics().latency("my-latency-toxic", DOWNSTREAM, 1000).setJitter(200);
+        proxy.toxics().latency("my-latency-toxic", DOWNSTREAM, 1200).setJitter(500);
 
         StopWatch stopWatch = new StopWatch();
 
@@ -63,7 +63,7 @@ public class HelloControllerIT {
             System.out.println(body + " in " + lastTaskTimeMillis + "ms");
 
             assertThat(body, containsString("Hello"));
-            assertTrue(lastTaskTimeMillis < 2000);
+            assertTrue(lastTaskTimeMillis < 1500);
 
             Thread.sleep(300);
         }

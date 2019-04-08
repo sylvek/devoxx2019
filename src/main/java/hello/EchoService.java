@@ -20,10 +20,7 @@ public class EchoService {
 
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return restTemplateBuilder
-                //.setConnectTimeout(30)
-                //.setReadTimeout(100)
-                .build();
+        return restTemplateBuilder.build();
     }
 
     String getEcho() {
