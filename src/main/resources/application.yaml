@@ -1,1 +1,23 @@
 hello: http://localhost:8888/helloworld
+
+spring:
+    profiles:
+      active: chaos-monkey
+
+chaos:
+  monkey:
+    enabled: true
+    watcher:
+      controller: false
+      restController: true
+      service: true
+      repository: false
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,chaosmonkey
